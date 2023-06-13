@@ -1,0 +1,67 @@
+[{
+  "_id": {
+    "$oid": "64720c76b07ea3a4876a403f"
+  },
+  "name": "Comedy",
+  "value": 240
+},{
+  "_id": {
+    "$oid": "64720c76b07ea3a4876a4040"
+  },
+  "name": "Adventure",
+  "value": 22
+},{
+  "_id": {
+    "$oid": "64720c76b07ea3a4876a4041"
+  },
+  "name": "Action",
+  "value": 46
+},{
+  "_id": {
+    "$oid": "64720c76b07ea3a4876a4042"
+  },
+  "name": "Drama",
+  "value": 68
+},{
+  "_id": {
+    "$oid": "64720c76b07ea3a4876a4043"
+  },
+  "name": "Biography",
+  "value": 22
+},{
+  "_id": {
+    "$oid": "64720c76b07ea3a4876a4044"
+  },
+  "name": "Crime",
+  "value": 34
+},{
+  "_id": {
+    "$oid": "64720c76b07ea3a4876a4045"
+  },
+  "name": "Film-Noir",
+  "value": 1
+},{
+  "_id": {
+    "$oid": "64720c76b07ea3a4876a4046"
+  },
+  "name": "Mystery",
+  "value": 4
+},{
+  "_id": {
+    "$oid": "64720c76b07ea3a4876a4047"
+  },
+  "name": "Horror",
+  "value": 4
+},{
+  "_id": {
+    "$oid": "64720c76b07ea3a4876a4048"
+  },
+  "name": "Western",
+  "value": 2
+},{
+  "_id": {
+    "$oid": "64720c76b07ea3a4876a4049"
+  },
+  "name": "Animation",
+  "value": 23
+}]

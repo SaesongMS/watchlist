@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    ports:
+      - "27018:27018"
+    command: ["mongod", "--port", "27018"]
+
+  mongo-seed:
+    build: ./db_data
+    depends_on:
+      - mongo
+    restart: on-failure
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+        - "8000:80"
+    depends_on:
+        - mongo
+    links:
+      - mongo
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    container_name: react-ui
+    stdin_open: true
+    volumes:
+       - ./frontend:/usr/src/app/frontend
+       - /usr/src/app/frontend/node_modules
+    depends_on:
+      - backend
+    restart: on-failure

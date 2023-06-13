@@ -1,0 +1,52 @@
+[{
+  "_id": "ddfa06a5-6d10-4b87-b167-6b40e4ff2d29",
+  "UserName": "A",
+  "NormalizedUserName": "A",
+  "Email": "a@a.a",
+  "NormalizedEmail": "A@A.A",
+  "EmailConfirmed": false,
+  "PasswordHash": "AQAAAAEAACcQAAAAEBaqZYGE4Dn611kBn3c0W6+5CgFpJUmVx6C1EJbYKzfU0Y60SeXwZNxWIsNY+KFlZw==",
+  "SecurityStamp": "GEMVHEFJNTJMBAAHY24ZWD4WL7XIG3Z7",
+  "ConcurrencyStamp": "b0593531-499e-4831-a788-89349de803f2",
+  "PhoneNumber": null,
+  "PhoneNumberConfirmed": false,
+  "TwoFactorEnabled": false,
+  "LockoutEnd": null,
+  "LockoutEnabled": true,
+  "AccessFailedCount": 0,
+  "Version": 1,
+  "CreatedOn": "2023-05-27T13:52:36.6579483Z",
+  "Claims": [],
+  "Roles": [
+    "2423e9be-82d9-431e-8d46-1b285b6e8cad"
+  ],
+  "Logins": [],
+  "Tokens": [],
+  "FullName": "A A"
+},{
+  "_id": "824df7b7-0cc1-44f4-9219-38331fbbeb95",
+  "UserName": "admin",
+  "NormalizedUserName": "ADMIN",
+  "Email": "admin@admin.com",
+  "NormalizedEmail": "ADMIN@ADMIN.COM",
+  "EmailConfirmed": false,
+  "PasswordHash": "AQAAAAEAACcQAAAAEEYJuX57ISwlxfN22aNPbk7yguj0x+KJqUovjYy8vWbOn4vsIE4N+nedzp7OS6W+gQ==",
+  "SecurityStamp": "ZSPQ3GVOHJVCDW6LJ6ICSXCSK7TQTV4M",
+  "ConcurrencyStamp": "e17def18-a395-4efa-b8f2-39cebb184a37",
+  "PhoneNumber": null,
+  "PhoneNumberConfirmed": false,
+  "TwoFactorEnabled": false,
+  "LockoutEnd": null,
+  "LockoutEnabled": true,
+  "AccessFailedCount": 0,
+  "Version": 1,
+  "CreatedOn": "2023-05-27T14:00:33.450519Z",
+  "Claims": [],
+  "Roles": [
+    "2423e9be-82d9-431e-8d46-1b285b6e8cad",
+    "e077cb28-58d0-43a7-915b-985f9058e574"
+  ],
+  "Logins": [],
+  "Tokens": [],
+  "FullName": "Admin"
+}]
