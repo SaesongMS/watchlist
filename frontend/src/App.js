@@ -8,6 +8,8 @@ import GetXML from "./pages/xml/GetXML";
 import TopMoviesList from "./pages/top_movies/TopMoviesList";
 import TopAnimeList from "./pages/top_anime/TopAnimeList";
 import List from "./pages/list/List";
+import AddListElement from "./pages/list/AddListElement";
+import EditListElement from "./pages/list/EditListElement";
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +23,8 @@ function App() {
         <Route path="/top-anime-list" element={<TopAnimeList />} />
         <Route path="/get-xml" element={<GetXML />} />
         <Route path="/list" element={<List />} />
+        <Route path="/list-add" element={<AddListElement />} />
+        <Route path="/list-edit" element={<EditListElement />} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </BrowserRouter>

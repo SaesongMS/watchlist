@@ -1,0 +1,25 @@
+[{
+  "_id": "ddfa06a5-6d10-4b87-b167-6b40e4ff2d29",
+  "watched": [
+    {
+      "_id": "9253",
+      "url": "https://cdn.myanimelist.net/images/anime/1935/127974.jpg",
+      "tittle": "Steins;Gate",
+      "year": "2011",
+      "genre": "Drama"
+    }
+  ],
+  "planned": [
+    {
+      "_id": "tt0050083",
+      "url": "https://m.media-amazon.com/images/M/MV5BMWU4N2FjNzYtNTVkNC00NzQ0LTg0MjAtYTJlMjFhNGUxZDFmXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_.jpg",
+      "tittle": "De 12 gezworenen",
+      "year": "1957",
+      "genre": "Drama"
+    }
+  ]
+},{
+  "_id": "824df7b7-0cc1-44f4-9219-38331fbbeb95",
+  "watched": [],
+  "planned": []
+}]

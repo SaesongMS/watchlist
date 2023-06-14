@@ -45,6 +45,7 @@ var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
         options.Lockout.MaxFailedAccessAttempts = 5;
 
         options.User.RequireUniqueEmail = true;
+        
     }
 };
 
@@ -74,6 +75,8 @@ builder.Services.AddAuthentication(x =>
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey1234")),
             ClockSkew = TimeSpan.Zero
         };
+        
+
     });
 
 builder.Services.AddControllers();

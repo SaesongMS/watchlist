@@ -32,7 +32,7 @@ namespace Project_WebAPI.Controllers
         {   
             var user_id = user.UserId;
             var collection = database.GetCollection<List>("list");
-            var filter = Builders<List>.Filter.Eq("user_id", user_id);
+            var filter = Builders<List>.Filter.Eq("_id", user_id);
             var result = await collection.Find(filter).FirstOrDefaultAsync();
             if (result == null){
                 var list = new List();
@@ -40,12 +40,18 @@ namespace Project_WebAPI.Controllers
                 await collection.InsertOneAsync(list);
                 var watched = list.watched;
                 var planned = list.planned;
-                var concat = watched.Concat(planned);
+                var concat = new {
+                    watched= watched, 
+                    planned = planned
+                };
                 return Ok(concat);
             }else{
                 var watched = result.watched;
                 var planned = result.planned;
-                var concat = watched.Concat(planned);
+                var concat = new {
+                    watched= watched, 
+                    planned = planned
+                };
                 return Ok(concat);
             }   
         }
@@ -88,10 +94,12 @@ namespace Project_WebAPI.Controllers
 
         [HttpPost]
         [Route("add/planned")]
-        public async Task<IActionResult> AddPlanned(string user_id, [FromBody] GenreResponse subject)
+        public async Task<IActionResult> AddPlanned([FromBody] ListRequest request)
         {
+            var user_id = request.user.UserId;
+            var subject = request.subject;
             var collection = database.GetCollection<List>("list");
-            var filter = Builders<List>.Filter.Eq("user_id", user_id);
+            var filter = Builders<List>.Filter.Eq("_id", user_id);
             var result = await collection.Find(filter).FirstOrDefaultAsync();
             if (result == null){
                 var list = new List();
@@ -100,18 +108,22 @@ namespace Project_WebAPI.Controllers
                 await collection.InsertOneAsync(list);
                 return Ok(list.planned);
             }else{
-                result.planned.Add(subject);
-                await collection.ReplaceOneAsync(filter, result);
+                if(!result.planned.Contains(subject)){
+                    result.planned.Add(subject);
+                    await collection.ReplaceOneAsync(filter, result);
+                }
                 return Ok(result.planned);
             }   
         }
 
         [HttpPost]
         [Route("add/watched")]
-        public async Task<IActionResult> AddWatched(string user_id, [FromBody] GenreResponse subject)
+        public async Task<IActionResult> AddWatched([FromBody] ListRequest request)
         {
+            var user_id = request.user.UserId;
+            var subject = request.subject;
             var collection = database.GetCollection<List>("list");
-            var filter = Builders<List>.Filter.Eq("user_id", user_id);
+            var filter = Builders<List>.Filter.Eq("_id", user_id);
             var result = await collection.Find(filter).FirstOrDefaultAsync();
             if (result == null){
                 var list = new List();
@@ -120,18 +132,22 @@ namespace Project_WebAPI.Controllers
                 await collection.InsertOneAsync(list);
                 return Ok(list.watched);
             }else{
-                result.watched.Add(subject);
-                await collection.ReplaceOneAsync(filter, result);
+                if(!result.watched.Contains(subject)){
+                    result.watched.Add(subject);
+                    await collection.ReplaceOneAsync(filter, result);
+                }
                 return Ok(result.watched);
             }   
         }
 
         [HttpDelete]
         [Route("delete/planned")]
-        public async Task<IActionResult> DeletePlanned(string user_id, [FromBody] GenreResponse subject)
+        public async Task<IActionResult> DeletePlanned([FromBody] ListRequest request)
         {
+            var user_id = request.user.UserId;
+            var subject = request.subject;
             var collection = database.GetCollection<List>("list");
-            var filter = Builders<List>.Filter.Eq("user_id", user_id);
+            var filter = Builders<List>.Filter.Eq("_id", user_id);
             var result = await collection.Find(filter).FirstOrDefaultAsync();
             if (result == null){
                 var list = new List();
@@ -139,7 +155,12 @@ namespace Project_WebAPI.Controllers
                 await collection.InsertOneAsync(list);
                 return Ok(list.planned);
             }else{
-                result.planned.Remove(subject);
+                foreach(var item in result.planned){
+                    if(item.id == subject.id){
+                        result.planned.Remove(item);
+                        break;
+                    }
+                }
                 await collection.ReplaceOneAsync(filter, result);
                 return Ok(result.planned);
             }   
@@ -147,10 +168,12 @@ namespace Project_WebAPI.Controllers
 
         [HttpDelete]
         [Route("delete/watched")]
-        public async Task<IActionResult> DeleteWatched(string user_id, [FromBody] GenreResponse subject)
+        public async Task<IActionResult> DeleteWatched([FromBody] ListRequest request)
         {
+            var user_id = request.user.UserId;
+            var subject = request.subject;
             var collection = database.GetCollection<List>("list");
-            var filter = Builders<List>.Filter.Eq("user_id", user_id);
+            var filter = Builders<List>.Filter.Eq("_id", user_id);
             var result = await collection.Find(filter).FirstOrDefaultAsync();
             if (result == null){
                 var list = new List();
@@ -158,7 +181,12 @@ namespace Project_WebAPI.Controllers
                 await collection.InsertOneAsync(list);
                 return Ok(list.watched);
             }else{
-                result.watched.Remove(subject);
+                foreach(var item in result.watched){
+                    if(item.id == subject.id){
+                        result.watched.Remove(item);
+                        break;
+                    }
+                }
                 await collection.ReplaceOneAsync(filter, result);
                 return Ok(result.watched);
             }   

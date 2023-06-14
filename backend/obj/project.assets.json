@@ -2091,11 +2091,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\saeso\\Desktop\\WebAPI\\backend\\WebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\saeso\\Desktop\\WebAPI\\aspnet-react-mongo-docker-stack\\backend\\WebAPI.csproj",
       "projectName": "WebAPI",
-      "projectPath": "C:\\Users\\saeso\\Desktop\\WebAPI\\backend\\WebAPI.csproj",
+      "projectPath": "C:\\Users\\saeso\\Desktop\\WebAPI\\aspnet-react-mongo-docker-stack\\backend\\WebAPI.csproj",
       "packagesPath": "C:\\Users\\saeso\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\saeso\\Desktop\\WebAPI\\backend\\obj\\",
+      "outputPath": "C:\\Users\\saeso\\Desktop\\WebAPI\\aspnet-react-mongo-docker-stack\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

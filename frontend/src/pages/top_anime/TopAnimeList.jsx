@@ -12,14 +12,10 @@ const TopanimeList = () => {
     const [anime, setanime] = useState([]);
     const [active, setActive] = useState(1);
     const [dbGenre, setDbGenre] = useState([]);
+    const [watchedList, setWatchedList] = useState([]);
+    const [plannedList, setPlannedList] = useState([]);
     const [n, setN] = useState(0);
  
-  const getItemProps = (index) =>
-    ({
-      variant: active === index ? "filled" : "text",
-      color: active === index ? "blue" : "blue-gray",
-      onClick: () => setActive(index),
-    } );
  
   const next = () => {
     setActive(active + 24);
@@ -47,6 +43,7 @@ const TopanimeList = () => {
     
     const navigate = useNavigate()
     useEffect(() => {
+        getUserList();
         getData(genre);
         getGenresDB();
       }, []);
@@ -61,6 +58,15 @@ const TopanimeList = () => {
         setDbGenre(response.data);
     }
 
+    const getUserList = async () => {
+      const user = JSON.parse(localStorage.getItem("user"));
+      if(user!=null){
+        const response = await axios.post("http://localhost:8000/api/list/get/all",user);
+        setWatchedList(response.data.watched);
+        setPlannedList(response.data.planned);
+      }
+    }
+
     const handleChart = () => {
       navigate("/top-anime")
       }
@@ -68,7 +74,7 @@ const TopanimeList = () => {
     const [i, set_i] = useState(1);
     const getList = () => {
         return(
-            anime.slice(i-1, i+24).map((movie) => <MovieCard movie={movie} />)
+            anime.slice(i-1, i+24).map((movie) => <MovieCard movie={movie} watched={watchedList} planned={plannedList} location="top-anime-list"/>)
         );
     }
 
@@ -84,7 +90,6 @@ const TopanimeList = () => {
         <Navbar/>
         <div className="shadow-lg h-[100%] w-[100%] flex items-center flex-grow bg-[#ffe7cc]">
           <div className="overflow-y-auto flex flex-col w-[83.333333%] shadow-lg  mr-16 h-5/6 flex-grow rounded-br-3xl rounded-tr-3xl border-b-2 border-r-2 border-t-2 border-[#fea1a1] bg-[#f9fbe7] items-start">
-            
             <div className="flex flex-col items-center">
             <button className="mr-[70%] mt-6 border shadow-md hover:shadow-lg border-[#fea1a1] bg-[#f9fbe7] text-[#fea1a1] pt-2 pb-2 pl-6 pr-6 rounded-3xl" onClick={handleChart}>Chart</button>
             <select className="mt-6 border shadow-md hover:shadow-lg border-[#fea1a1] bg-[#f9fbe7] text-[#fea1a1] pt-2 pb-2 pl-6 pr-6 rounded-3xl" value={genre} onChange={handleChange}>

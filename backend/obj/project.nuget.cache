@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5D7YRoqtj3vQHuWv1rzO5c3u1RMRvjiMoQWI5H/PbnPksJWaQuKf+3Zwe7eI5CGKFnduRians3Ss3GXzwNmQKw==",
+  "dgSpecHash": "uTPZ6YFrnmIGraIjcE5NpyUo/uSqa/efPq7UIgKyPyPcKgSbxe19hgiWfNAbQEWAq2t8WuhQEAPh36fiNZKqSA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\saeso\\Desktop\\WebAPI\\backend\\WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\saeso\\Desktop\\WebAPI\\aspnet-react-mongo-docker-stack\\backend\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\saeso\\.nuget\\packages\\aspnetcore.identity.mongodbcore\\3.1.2\\aspnetcore.identity.mongodbcore.3.1.2.nupkg.sha512",
     "C:\\Users\\saeso\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",

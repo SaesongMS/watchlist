@@ -12,6 +12,7 @@ It also includes the following features:
 - Charts for visualizing data
 - List of movies/anime filtered by genre
 - Data is obtained from external APIs. You can find the documentations for them here: https://rapidapi.com/SAdrian/api/moviesdatabase/details and https://docs.api.jikan.moe/
+- List of watched/planned to watch movies/anime for each user, with the ability to add/remove them from the list and change them to the opposite list
 
 ## Installation
 The instructions assume that you have already installed Docker and Docker Compose.
@@ -59,3 +60,15 @@ Database contains two created users:
 |![admin panel](examples/admin-panel.JPG)|
 |:--:|
 |*Admin panel*|
+
+|![list of watched/planned](examples/list.JPG)|
+|:--:|
+|*List of watched/planned*|
+
+|![add to list](examples/list_add.JPG)|
+|:--:|
+|*Add to list*|
+
+|![edit element in list](examples/list_edit.JPG)|
+|:--:|
+|*Edit element in list*|

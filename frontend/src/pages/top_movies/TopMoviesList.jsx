@@ -12,6 +12,8 @@ const TopMoviesList = () => {
     const [movies, setMovies] = useState([]);
     const [active, setActive] = React.useState(1);
     const [dbGenre, setDbGenre] = useState([]);
+    const [watchedList, setWatchedList] = useState([]);
+    const [plannedList, setPlannedList] = useState([]);
  
   const getItemProps = (index) =>
     ({
@@ -40,8 +42,9 @@ const TopMoviesList = () => {
     
     const navigate = useNavigate()
     useEffect(() => {
-        getData(genre);
-        getGenresDB();
+      getUserList();
+      getData(genre);
+      getGenresDB();
       }, []);
     
     const getData = async (genre) => {
@@ -53,6 +56,16 @@ const TopMoviesList = () => {
         setDbGenre(response.data);
     }
 
+    const getUserList = async () => {
+      const user = JSON.parse(localStorage.getItem("user"));
+      if(user!=null){
+        const response = await axios.post("http://localhost:8000/api/list/get/all",user);
+        setWatchedList(response.data.watched);
+        setPlannedList(response.data.planned);
+      }
+    }
+
+
     const handleChart = () => {
       navigate("/top-movies")
       }
@@ -60,7 +73,7 @@ const TopMoviesList = () => {
     const [i, set_i] = useState(1);
     const getList = () => {
         return(
-            movies.slice(i-1, i+24).map((movie) => <MovieCard movie={movie} />)
+            movies.slice(i-1, i+24).map((movie) => <MovieCard movie={movie} watched={watchedList} planned={plannedList} location="/top-movies-list"/>)
         );
     }
 

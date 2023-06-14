@@ -5,9 +5,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
-  const dispatch  = useContext(AuthContext);
   const [roles, setRoles] = useState([]);
 
   useEffect(() => {
@@ -22,6 +21,10 @@ const Navbar = () => {
             }
         });
         const content = await response.json();
+        if(response.status === 400){
+          dispatch({ type: "LOGOUT" });
+          return;
+        }
         setRoles(content.roles);
     }
     if (user != null)
@@ -32,10 +35,6 @@ const Navbar = () => {
     navigate("/login");
   };
 
-  const handleRegister = () => {
-    navigate("/register");
-  };
-
   const handleAnime = () => {
     navigate("/top-anime");
   };
@@ -44,8 +43,12 @@ const Navbar = () => {
     navigate("/top-movies");
   };
 
+  const handleList = () => {
+    navigate("/list");
+  };
+
   const  handleLogout = () => {
-    localStorage.setItem("user", null);
+    dispatch({ type: "LOGOUT" });
     navigate(0);
   };
 
@@ -64,7 +67,8 @@ const Navbar = () => {
     <div className="top-0 shadow-md hover:shadow-lg h-auto w-auto border-b cursor-pointer rounded-br-lg border-[#fea1a1] bg-[#f9fbe7] mb-8"><img onClick={handleReturn} src="https://i.imgur.com/CurXliU.png"/></div>
     <div className="flex-grow">
       <button onClick={handleAnime} className="shadow-lg hover:shadow-inner relative flex w-[100%] justify-end rounded-tr-lg border-b border-r border-t border-[#fea1a1] bg-[#f9fbe7] pb-2 pr-2 pt-2 text-[#fea1a1]">Anime</button>
-      <button onClick={handleMovies} className="shadow-lg hover:shadow-inner relative flex w-[100%] justify-end border-b rounded-br-lg border-r border-[#fea1a1] bg-[#f9fbe7] pb-2 pr-2 pt-2 text-[#fea1a1]">Movies</button>
+      <button onClick={handleMovies} className="shadow-lg hover:shadow-inner relative flex w-[100%] justify-end border-b border-r border-[#fea1a1] bg-[#f9fbe7] pb-2 pr-2 pt-2 text-[#fea1a1]">Movies</button>
+      {user ? (<button onClick={handleList} className="shadow-lg hover:shadow-inner relative flex w-[100%] justify-end border-b rounded-br-lg border-r border-[#fea1a1] bg-[#f9fbe7] pb-2 pr-2 pt-2 text-[#fea1a1]">List</button>) : () => {return null}}
     </div>
     <div>
       {user ? (<button onClick={handleLogout} className="hover:shadow-inner relative flex w-[100%] justify-end rounded-tr-lg border-b border-r border-t border-[#fea1a1] bg-[#f9fbe7] pb-2 pr-2 pt-2 text-[#fea1a1]">Logout</button>) : () => {return null}}
