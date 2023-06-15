@@ -65,10 +65,12 @@ Database contains two created users:
 |:--:|
 |*List of watched/planned*|
 
-|![add to list](examples/list_add.JPG)|
+|![add to list](examples/list_add.jpg)|
 |:--:|
 |*Add to list*|
 
 |![edit element in list](examples/list_edit.JPG)|
 |:--:|
 |*Edit element in list*|
+
+This project was created and maintained by [70masz](https://github.com/70masz) and [SaesonMS](https://github.com/SaesongMS)
