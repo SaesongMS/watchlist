@@ -27,7 +27,7 @@ namespace Project_WebAPI.Controllers
             database = mongoClient.GetDatabase(settings.Value.DatabaseName);
         }
         
-        [Authorize]
+        [Authorize (Roles = "Admin")]
         [HttpGet]
         [Route("top_api")]
         public async Task<IActionResult> GetTop250_API()
@@ -156,7 +156,7 @@ namespace Project_WebAPI.Controllers
             public override Encoding Encoding => Encoding.UTF8;
         }
 
-        [Authorize]
+        [Authorize (Roles = "Admin")]
         [HttpGet]
         [Route("getXML")]
         public IActionResult GetXML()
@@ -184,7 +184,7 @@ namespace Project_WebAPI.Controllers
             return Ok(xml);
         }
 
-        [Authorize]
+        [Authorize (Roles = "Admin")]
         [HttpPost]
         [Route("addXML")]
         public async Task<IActionResult> AddXML(IFormFile file)
