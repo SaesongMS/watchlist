@@ -1,4 +1,5 @@
-# aspnet-react-mongo-docker-stack
+# watchlist
+## aspnet-react-mongo-docker-stack
 
 This Docker stack is a simple example of how to run a ASP.NET Core Web API, React, and MongoDB in Docker containers. The stack is composed of the following components:
 - ASP.NET Core Web API 6 as the backend
